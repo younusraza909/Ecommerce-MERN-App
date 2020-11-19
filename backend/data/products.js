@@ -81,4 +81,6 @@ const products = [
 
 // export default products; Es module syntax
 
-module.exports = products; //Common js syntax
+export default products;
+
+// module.exports = products; //Common js syntax
