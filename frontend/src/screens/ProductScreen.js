@@ -8,7 +8,7 @@ import Message from "../components/Message";
 import Loader from "../components/Loader";
 
 const ProductScreen = ({match, history}) => {
-	const [qty, setQty] = useState();
+	const [qty, setQty] = useState(1);
 	const productDetails = useSelector((state) => state.productDetails);
 
 	const {loading, error, product} = productDetails;

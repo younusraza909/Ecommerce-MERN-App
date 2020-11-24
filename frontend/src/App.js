@@ -17,7 +17,8 @@ function App() {
 					<Container>
 						<Route path='/' component={HomeScreen} exact />
 						<Route path='/product/:id' component={ProductScreen} />
-						<Route path='/cart/:id' component={CartScreen} />
+						{/* ? make it optional to have id to go to cart page */}
+						<Route path='/cart/:id?' component={CartScreen} />
 					</Container>
 				</main>
 				<Footer />
