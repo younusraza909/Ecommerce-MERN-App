@@ -7,7 +7,7 @@ import Loader from "../components/Loader";
 import {Register} from "../actions/userAction";
 import FormContainer from "../components/FormContainer";
 
-const RegitserScreen = ({location, history}) => {
+const RegisterScreen = ({location, history}) => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
@@ -97,4 +97,4 @@ const RegitserScreen = ({location, history}) => {
 	);
 };
 
-export default RegitserScreen;
+export default RegisterScreen;
