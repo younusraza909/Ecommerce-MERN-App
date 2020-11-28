@@ -6,6 +6,7 @@ import CartScreen from "./screens/CartScreen";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import ProfileScreen from "./screens/ProfileScreen";
+import ShippingScreen from "./screens/ShippingScreen";
 import {BrowserRouter as Router, Route} from "react-router-dom";
 
 // import for bootstrap
@@ -22,6 +23,7 @@ function App() {
 						<Route path='/register' component={RegisterScreen} />
 						<Route path='/profile' component={ProfileScreen} />
 						<Route path='/product/:id' component={ProductScreen} />
+						<Route path='/shipping' component={ShippingScreen} />
 						{/* ? make it optional to have id to go to cart page */}
 						<Route path='/cart/:id?' component={CartScreen} />
 						<Route path='/' component={HomeScreen} exact />
