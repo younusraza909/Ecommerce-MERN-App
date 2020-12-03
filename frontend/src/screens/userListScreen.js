@@ -4,7 +4,7 @@ import { Table, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import { listUsers } from "../actions/userAction";
+import { listUsers, deleteUser } from "../actions/userAction";
 
 const UserListScreen = ({ history }) => {
   const dispatch = useDispatch();
@@ -14,8 +14,11 @@ const UserListScreen = ({ history }) => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
+  const userDelete = useSelector((state) => state.userDelete);
+  const { success: successDelete } = userDelete;
+
   const deleteHandler = (id) => {
-    console.log("Delete");
+    dispatch(deleteUser(id));
   };
 
   useEffect(() => {
@@ -24,7 +27,7 @@ const UserListScreen = ({ history }) => {
     } else {
       history.push("/login");
     }
-  }, [dispatch, history]);
+  }, [dispatch, history, successDelete]);
 
   return (
     <Fragment>

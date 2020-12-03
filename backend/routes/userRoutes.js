@@ -4,6 +4,7 @@ import { protect, admin } from "../middleware/authMiddleware.js";
 
 import {
   authUser,
+  deleteUser,
   getUserProfile,
   getUsers,
   registerUser,
@@ -19,3 +20,5 @@ router
 
 router.route("/").post(registerUser).get(protect, admin, getUsers);
 export default router;
+
+router.route("/:id").delete(protect, admin, deleteUser);
