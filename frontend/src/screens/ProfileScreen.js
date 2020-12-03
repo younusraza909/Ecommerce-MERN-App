@@ -26,7 +26,11 @@ const ProfileScreen = ({ location, history }) => {
   const { success } = userUpdateProfile;
 
   const orderListMy = useSelector((state) => state.orderListMy);
-  const { loading: loadingOrders, orders, error: errorOrders } = orderListMy;
+  const {
+    loading: loadingOrders,
+    orders: ordersList,
+    error: errorOrders,
+  } = orderListMy;
 
   useEffect(() => {
     if (!userInfo) {
@@ -123,7 +127,7 @@ const ProfileScreen = ({ location, history }) => {
               </tr>
             </thead>
             <tbody>
-              {orders.map((order) => (
+              {ordersList.map((order) => (
                 <tr key={order._id}>
                   <td>{order._id}</td>
                   <td>{order.createdAt.substring(0, 10)}</td>
@@ -144,7 +148,7 @@ const ProfileScreen = ({ location, history }) => {
                   </td>
                   <td>
                     <LinkContainer to={`/order/${order._id}`}>
-                      <Button variant={light} className="btn-sm">
+                      <Button variant="light" className="btn-sm">
                         Details
                       </Button>
                     </LinkContainer>

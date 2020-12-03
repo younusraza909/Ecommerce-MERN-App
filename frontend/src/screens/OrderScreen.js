@@ -10,7 +10,7 @@ import { PayPalButton } from "react-paypal-button-v2";
 import { ORDER_PAY_RESET } from "../constants/orderConstants";
 
 const OrderScreen = ({ match }) => {
-  const [sdkReady, setSDKReady] = useState(false);
+  const [sdkReady, setsdkReady] = useState(false);
 
   const orderId = match.params.id;
   const dispatch = useDispatch();
@@ -36,11 +36,11 @@ const OrderScreen = ({ match }) => {
 
       const script = document.createElement("script");
       script.type = "text/javascript";
-      script.async = true;
       script.src = `https://wwww.paypal.com/sdk/js?client-id=${clientId}`;
-      script.onload = () => {
-        setSDKReady(true);
-      };
+      script.async = true;
+
+      setsdkReady(true);
+
       document.body.appendChild(script);
     };
     if (!order || successPay) {
@@ -50,7 +50,7 @@ const OrderScreen = ({ match }) => {
       if (!window.paypal) {
         addPayPalScript();
       } else {
-        setSDKReady(true);
+        setsdkReady(true);
       }
     }
   }, [dispatch, orderId, successPay, order]);
