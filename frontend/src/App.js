@@ -11,6 +11,7 @@ import PaymentMethodScreen from "./screens/PaymentMethodScreen";
 import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 import OrderScreen from "./screens/OrderScreen";
 import UserListScreen from "./screens/UserListScreen";
+import UserEditScreen from "./screens/UserEditScreen";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 // import for bootstrap
@@ -28,6 +29,7 @@ function App() {
             <Route path="/placeorder" component={PlaceOrderScreen} />
             <Route path="/order/:id" component={OrderScreen} />
             <Route path="/admin/userlist" component={UserListScreen} />
+            <Route path="/admin/user/:id/edit" component={UserEditScreen} />
             <Route path="/register" component={RegisterScreen} />
             <Route path="/profile" component={ProfileScreen} />
             <Route path="/product/:id" component={ProductScreen} />

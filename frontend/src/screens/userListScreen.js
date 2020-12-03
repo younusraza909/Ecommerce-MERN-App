@@ -18,7 +18,9 @@ const UserListScreen = ({ history }) => {
   const { success: successDelete } = userDelete;
 
   const deleteHandler = (id) => {
-    dispatch(deleteUser(id));
+    if (window.confirm("Are You sure")) {
+      dispatch(deleteUser(id));
+    }
   };
 
   useEffect(() => {
@@ -27,7 +29,7 @@ const UserListScreen = ({ history }) => {
     } else {
       history.push("/login");
     }
-  }, [dispatch, history, successDelete]);
+  }, [dispatch, history, successDelete, userInfo]);
 
   return (
     <Fragment>
@@ -63,7 +65,7 @@ const UserListScreen = ({ history }) => {
                   )}
                 </td>
                 <td>
-                  <LinkContainer to={`/user/${user._id}/edit`}>
+                  <LinkContainer to={`/admin/user/${user._id}/edit`}>
                     <Button variant="light" className="btn-sm">
                       <i className="fas fa-edit"></i>
                     </Button>
