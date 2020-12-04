@@ -12,6 +12,7 @@ import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 import OrderScreen from "./screens/OrderScreen";
 import UserListScreen from "./screens/UserListScreen";
 import UserEditScreen from "./screens/UserEditScreen";
+import ProductListScreen from "./screens/ProductListScreen";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 // import for bootstrap
@@ -33,6 +34,7 @@ function App() {
             <Route path="/register" component={RegisterScreen} />
             <Route path="/profile" component={ProfileScreen} />
             <Route path="/product/:id" component={ProductScreen} />
+            <Route path="/admin/productlist" component={ProductListScreen} />
             <Route path="/shipping" component={ShippingScreen} />
             {/* ? make it optional to have id to go to cart page */}
             <Route path="/cart/:id?" component={CartScreen} />
