@@ -8,16 +8,19 @@ const storage = multer.diskStorage({
     cb(null, "uploads/");
   },
   filename(req, file, cb) {
-    cb(`${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
+    cb(
+      null,
+      `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`
+    );
   },
 });
 
 function checkFileType(file, cb) {
   const fileTypes = /jpg|jpeg|png/;
   const extname = fileTypes.test(path.extname(file.originalname).toLowerCase());
-  const mimetye = fileTypes.test(file.mimetye);
+  const mimetype = fileTypes.test(file.mimetype);
 
-  if (extname && mimetye) {
+  if (extname && mimetype) {
     return cb(null, true);
   } else {
     cb("Images Only");
