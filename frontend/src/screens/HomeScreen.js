@@ -1,41 +1,43 @@
-import React, {useEffect} from "react";
-import {Row, Col} from "react-bootstrap";
+import React, { useEffect } from "react";
+import { Row, Col } from "react-bootstrap";
 import Product from "../components/Product";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 
 //implemting redux
-import {useDispatch, useSelector} from "react-redux";
-import {listProducts} from "../actions/productAction";
+import { useDispatch, useSelector } from "react-redux";
+import { listProducts } from "../actions/productAction";
 
-const HomeScreen = () => {
-	const dispatch = useDispatch();
+const HomeScreen = ({ match }) => {
+  const keyword = match.params.keyword;
 
-	const productList = useSelector((state) => state.productList);
-	const {loading, error, products} = productList;
+  const dispatch = useDispatch();
 
-	useEffect(() => {
-		dispatch(listProducts());
-	}, [dispatch]);
+  const productList = useSelector((state) => state.productList);
+  const { loading, error, products } = productList;
 
-	return (
-		<>
-			<h1>Latest Products</h1>
-			{loading ? (
-				<Loader />
-			) : error ? (
-				<Message variant='danger' children={error} />
-			) : (
-				<Row>
-					{products.map((product) => (
-						<Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-							<Product product={product} />
-						</Col>
-					))}
-				</Row>
-			)}
-		</>
-	);
+  useEffect(() => {
+    dispatch(listProducts(keyword));
+  }, [dispatch, keyword]);
+
+  return (
+    <>
+      <h1>Latest Products</h1>
+      {loading ? (
+        <Loader />
+      ) : error ? (
+        <Message variant="danger" children={error} />
+      ) : (
+        <Row>
+          {products.map((product) => (
+            <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+              <Product product={product} />
+            </Col>
+          ))}
+        </Row>
+      )}
+    </>
+  );
 };
 
 export default HomeScreen;

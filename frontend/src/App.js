@@ -45,6 +45,7 @@ function App() {
             <Route path="/shipping" component={ShippingScreen} />
             {/* ? make it optional to have id to go to cart page */}
             <Route path="/cart/:id?" component={CartScreen} />
+            <Route path="/search/:keyword" component={HomeScreen} />
             <Route path="/" component={HomeScreen} exact />
           </Container>
         </main>
