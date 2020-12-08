@@ -6,7 +6,9 @@ import uploadRoutes from "./routes/uploadRoutes.js";
 import dotenv from "dotenv";
 import path from "path";
 import connectDb from "./config/db.js";
+import morgan from "morgan";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
+import { protect } from "./middleware/authMiddleware.js";
 
 dotenv.config();
 
@@ -14,6 +16,10 @@ connectDb();
 
 const app = express();
 app.use(express.json());
+
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
+}
 
 app.get("/", (req, res) => {
   res.send("API is running");
