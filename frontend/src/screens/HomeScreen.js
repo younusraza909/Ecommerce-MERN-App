@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Row, Col, Pagination } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import Product from "../components/Product";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
