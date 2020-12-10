@@ -7,6 +7,7 @@ import {
   updateProduct,
   createProduct,
   createProductReview,
+  getTopProducts,
 } from "../Controllers/productController.js";
 
 const router = express.Router();
@@ -19,5 +20,7 @@ router
   .get(getProductById)
   .delete(protect, admin, deleteProduct)
   .put(protect, admin, updateProduct);
+
+router.get("/top", getTopProducts);
 
 export default router;
